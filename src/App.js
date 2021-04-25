@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { PureComponent } from 'react'
+import {Provider} from 'react-redux'
+import AppLayout from './components/AppLayout';
+import CoinOverview from './components/main/CoinOverview';
+import MainPage from './components/main/MainPage';
+import configureStore from './store/configureStore'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+class App extends PureComponent {
+store = configureStore()
+  render() {
+    return (
+       <Provider store={this.store}>
+     
+      <AppLayout>
+        <MainPage/>
+       </AppLayout> 
+    </Provider>
+      
+    )
+  }
 }
 
 export default App;
